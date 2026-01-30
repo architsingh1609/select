@@ -1,0 +1,59 @@
+# Selenium Dropdown Automation Project
+
+This project demonstrates how to handle **dropdowns using Selenium WebDriver in Java** with the `Select` class and how navigation (refresh) affects dropdown selection.
+
+---
+
+## 🛠️ Technologies Used
+- Java
+- Selenium WebDriver
+- ChromeDriver
+- Maven (optional)
+- TestAutomationPractice Website
+
+---
+
+## 📂 Project Structure
+
+---
+
+## 🚀 What This Script Does
+1. Launches Chrome browser
+2. Opens the test site:  
+   https://testautomationpractice.blogspot.com/
+3. Selects **Canada** from dropdown
+4. Refreshes the page
+5. Selects **France** from dropdown again
+
+---
+
+## 💻 Source Code
+
+```java
+package newChallange;
+
+import java.time.Duration;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class dropdowns {
+
+    public static void main(String[] args) {
+
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+        driver.get("https://testautomationpractice.blogspot.com/");
+
+        Select dropdown = new Select(driver.findElement(By.id("country")));
+        dropdown.selectByVisibleText("Canada");
+
+        driver.navigate().refresh();
+
+        Select dropdown2 = new Select(driver.findElement(By.id("country")));
+        dropdown2.selectByVisibleText("France");
+    }
+}
